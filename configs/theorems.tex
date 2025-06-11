@@ -1,0 +1,30 @@
+% THEOREMS
+\theoremstyle{plain} % italics
+\newtheorem{itheorem}{Theorem}%[section]
+\newtheorem{idefinition}{Definition}%[section]
+\newtheorem{icorollary}{Corollary}%[section]
+\newtheorem{ilemma}{Lemma}%[section]
+\iflncs
+\else
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\fi
+\newtheorem{assumption}{Assumption}
+\newtheorem{construction}{Construction}
+
+\theoremstyle{definition} % not italics
+\iflncs
+\else
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\fi
+
+\theoremstyle{remark} %
+\iflncs
+\else
+\newtheorem{case}{Case}
+\fi

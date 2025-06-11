@@ -1,0 +1,15 @@
+\newcommand{\papername}{Paper}
+
+% FORMATTING
+\allowdisplaybreaks
+\newcommand{\FormatAuthor}[3]{
+\begin{tabular}{c}
+#1 \\ {\small\texttt{#2}} \\ {\small #3}
+\end{tabular}
+}
+\newcommand{\doclearpage}{%
+  \iffull\clearpage\else\fi
+}
+\newcommand{\DoQuote}[1]{``#1''}
+\newcommand{\defemph}[1]{\textbf{\emph{#1}}}
+\newcommand{\keywords}[1]{\bigskip\par\noindent{\footnotesize\textbf{Keywords\/}: #1}}

@@ -1,0 +1,69 @@
+\iffull
+\usepackage[
+  giveninits,
+  backend=biber,
+  style=alphabetic,
+  maxnames=20,
+  maxalphanames=6,
+  url=false
+]{biblatex}
+\newbibmacro{string+url}[1]{%
+  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+\DeclareFieldFormat[inproceedings]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+\DeclareFieldFormat[misc]{title}{\usebibmacro{string+url}{\mkbibquote{#1\isdot}}}
+
+\else
+\usepackage[
+  style=alphabetic,
+  giveninits,
+  backend=biber,
+  maxalphanames=4,
+  minalphanames=3,
+  maxbibnames=15,
+  url=false
+]{biblatex}
+\newbibmacro{string+url}[1]{%
+  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+\DeclareFieldFormat[inproceedings]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+\DeclareFieldFormat[misc]{title}{\usebibmacro{string+url}{\mkbibquote{#1\isdot}}}
+
+\AtEveryBibitem{%
+  \ifentrytype{inproceedings}{%
+    \clearfield{year}%
+    \clearfield{pages}%
+    \clearfield{booktitle}%
+    \clearfield{note}%
+  }{%
+  }%
+}
+\AtEveryBibitem{%
+  \ifentrytype{misc}{%
+    \clearfield{year}%
+  }{%
+  }%
+}
+\AtEveryBibitem{%
+  \ifentrytype{article}{%
+    \clearfield{pages}%
+    \clearfield{volume}%
+    \clearfield{number}%
+    \clearfield{month}%
+  }{%
+  }%
+}
+
+
+\fi
+
+\iffull
+\bibliography{title-long,references}
+\else
+\bibliography{title-short,references}
+\fi
+
+
+\renewcommand*{\bibfont}{\small}

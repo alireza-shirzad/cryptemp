@@ -1,0 +1,30 @@
+\newif\iffull
+\newif\iflncs
+\newif\ifusenix
+\newif\ifoakland
+
+% \usenixtrue
+\fulltrue
+% \fullfalse
+
+\synctex=1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\iffull
+  \documentclass[11pt,letterpaper]{article}
+  \usepackage[draft,notes=true,later=true]{styles/dtrt}
+ \else
+  \iflncs
+    \documentclass[letter]{llncs}
+    \pagestyle{plain}
+  \else
+  \ifusenix
+  \documentclass[letterpaper,twocolumn,10pt]{article}
+  \usepackage{styles/usenix}
+  \fi
+  \usepackage{multicol}
+  \fi
+  \usepackage[notes=xxx,later=false]{styles/dtrt}
+\fi
