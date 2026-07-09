@@ -1,5 +1,22 @@
 % !TEX root = paper.tex
-\newcommand{\papername}{TruthTable++}
+
+% AUTHOR NOTES
+% Controlled by the \notes flag in configs/preamble.tex: when \notestrue the
+% comments are shown, when \notesfalse they are hidden. Add one command per
+% author here.
+\ifnotes
+  \newcommand{\ali}[1]{{\color{green}[Ali: #1]}}
+  \newcommand{\pratyush}[1]{{\color{red}[Pratyush: #1]}}
+  \newcommand{\sriram}[1]{{\color{orange}[Sriram: #1]}}
+\else
+  \newcommand{\ali}[1]{}
+  \newcommand{\pratyush}[1]{}
+  \newcommand{\sriram}[1]{}
+\fi
+
+\DeclareRobustCommand{\papername}%
+{\texorpdfstring{\ensuremath{\mathsf{Paper}}}{Paper}}
+
 
 % FORMATTING
 \allowdisplaybreaks

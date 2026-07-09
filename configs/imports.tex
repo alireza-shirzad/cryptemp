@@ -1,15 +1,22 @@
 % !TEX root = ../paper.tex
-\usepackage{fullpage}
+% fullpage widens the text block. The full (article) version and USENIX use it.
+% LNCS submissions keep the narrow LNCS width, and IEEE S&P uses IEEEtran's
+% fixed margins, so neither loads fullpage.
+\iffull
+  \usepackage{fullpage}
+\else
+  \ifusenix\usepackage{fullpage}\fi
+\fi
 \usepackage{microtype}
 \usepackage{setspace}
 \usepackage{amssymb,amsfonts,amsmath}
 \usepackage{etoolbox}
 
 
-\iflncs
+\iffull\else\iflncs
     \let\proof\relax
     \let\endproof\relax
-\fi
+\fi\fi
 \usepackage{amsthm}
 \usepackage{times}
 \usepackage{braket}
@@ -23,13 +30,14 @@
 \usepackage[inline,shortlabels]{enumitem}
 \setlist[itemize]{leftmargin=*}
 \setlist[enumerate]{leftmargin=*}
+\usepackage[hidelinks]{hyperref}
 \usepackage[capitalise]{cleveref}
 \crefname{step}{Step}{Steps}
 \usepackage{dsfont}
 \usepackage{url}
 \usepackage{braket}
 \usepackage{mathrsfs}
-\usepackage{color}
+\usepackage{xcolor}
 \usepackage{soul}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{mathtools}

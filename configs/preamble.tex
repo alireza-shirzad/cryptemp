@@ -1,32 +1,50 @@
 % !TEX root = ../paper.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Build configuration flags
+%   full   : full version. Uses a single-column article layout (11pt, letter,
+%            wide margins, with a table of contents) and shows the real author
+%            names. This is the eprint / arXiv "full version".
+%   lncs   : submission uses the LNCS (llncs) style.
+%   usenix : submission uses the USENIX style.
+%   sp     : submission uses the IEEE S&P (IEEEtran conference/compsoc) style.
+%            The lncs/usenix/sp flags only take effect when \fullfalse; the
+%            submission is then anonymized.
+%   notes  : show inline author comments (\ali, \pratyush, \sriram, ...).
+%            When false, these comments are hidden.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\iffull
 \newif\iflncs
 \newif\ifusenix
-\newif\ifoakland
+\newif\ifsp
+\newif\ifnotes
 
+% ---- Select the configuration here ----
 \lncstrue
-\usenixtrue
+% \usenixtrue
+% \sptrue
 \fulltrue
-% \fullfalse
+\notestrue
+% ---------------------------------------
 
 \synctex=1
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
+% The full version is a single-column article, independent of the venue style.
+% Otherwise, the (anonymized) submission uses the selected venue style.
 \iffull
   \documentclass[11pt,letterpaper]{article}
-  \usepackage[draft,notes=true,later=true]{styles/dtrt}
- \else
+\else
   \iflncs
     \documentclass[letter]{llncs}
     \pagestyle{plain}
-  \else
+  \fi
   \ifusenix
-  \documentclass[letterpaper,twocolumn,10pt]{article}
-  \usepackage{styles/usenix}
+    \documentclass[letterpaper,twocolumn,10pt]{article}
+    \usepackage{styles/usenix}
   \fi
-  \usepackage{multicol}
+  \ifsp
+    % IEEE S&P (Oakland): IEEEtran conference/compsoc, US letter.
+    \documentclass[conference,compsoc,letterpaper]{IEEEtran}
   \fi
-  \usepackage[notes=xxx,later=false]{styles/dtrt}
 \fi
+
+\usepackage{multicol}
